@@ -16,12 +16,9 @@ app = FastAPI()
 # router: comment out next line till create it
 app.include_router(todos.router)
 
-
-
-
 origins = [
     "http://localhost:3000",  # Localhost for development
-    "https://pdfs-frontend-cgpb1buul-dakar75gmailcoms-projects.vercel.app",  # Vercel deployment
+    "https://pdfs-frontend-cgpb1buul-dakar75gmailcoms-projects.vercel.app"  # Vercel deployment
 ]
 
 # CORS configuration, needed for frontend development
