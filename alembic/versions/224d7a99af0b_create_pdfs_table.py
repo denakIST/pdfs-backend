@@ -20,7 +20,7 @@ depends_on: Union[str, Sequence[str], None] = None
 def upgrade():
     op.create_table(
         'pdfs',
-        sa.Column('id', sa.BigInteger(), primary_key=True, autoincrement=True),
+        sa.Column('id', sa.BigSerial(), primary_key=True, autoincrement=True),
         sa.Column('name', sa.Text(), nullable=False),
         sa.Column('file', sa.Text(), nullable=False),
         sa.Column('selected', sa.Boolean(), nullable=False, server_default=sa.text('FALSE'))
