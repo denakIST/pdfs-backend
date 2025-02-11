@@ -60,4 +60,6 @@ def upload_pdf(db: Session, file: UploadFile, file_name: str):
     except NoCredentialsError:
         raise HTTPException(status_code=500, detail="Error in AWS credentials")
     except BotoCoreError as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise HTTPException(status_code=500, detail=f"Error interacting with AWS S3: {str(e)}")
+    
+   

@@ -13,24 +13,24 @@ import config
 
 app = FastAPI()
 
-# router: comment out next line till create it
-app.include_router(todos.router)
 
 origins = [
     "http://localhost:3000",  # Localhost for development
-    "https://pdfs-frontend-b5hw1bp2v-dakar75gmailcoms-projects.vercel.app"  # Vercel deployment
+    "https://pdfs-frontend-b5hw1bp2v-dakar75gmailcoms-projects.vercel.app/"  # Vercel deployment
+    
 ]
 
 # CORS configuration, needed for frontend development
 app.add_middleware(
     CORSMiddleware,
-    #allow_origins=["*"],
     allow_origins=origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# router: comment out next line till create it
+app.include_router(todos.router)
 
 # global http exception handler, to handle errors
 @app.exception_handler(StarletteHTTPException)
