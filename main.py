@@ -16,7 +16,7 @@ app = FastAPI()
 
 origins = [
     "http://localhost:3000",  # Localhost for development
-    "https://pdfs-frontend-b5hw1bp2v-dakar75gmailcoms-projects.vercel.app/"  # Vercel deployment
+    "https://pdfs-frontend-b5hw1bp2v-dakar75gmailcoms-projects.vercel.app"  # Vercel deployment
     
 ]
 

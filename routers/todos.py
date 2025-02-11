@@ -23,7 +23,7 @@ def create_pdf(pdf: schemas.PDFRequest, db: Session = Depends(get_db)):
 def upload_pdf(file: UploadFile = File(...), db: Session = Depends(get_db)):
     file_name = f"{uuid4()}-{file.filename}"
     return crud.upload_pdf(db, file, file_name)
-
+ 
 
 @router.get("", response_model=List[schemas.PDFResponse])
 def get_pdfs(selected: bool = None, db: Session = Depends(get_db)):
