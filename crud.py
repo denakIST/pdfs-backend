@@ -39,16 +39,16 @@ def delete_pdf(db: Session, id: int):
     db.commit()
     return True
 
+
 def upload_pdf(db: Session, file: UploadFile, file_name: str):
     s3_client = Settings.get_s3_client()
     BUCKET_NAME = Settings().AWS_S3_BUCKET
-
+    
     try:
         s3_client.upload_fileobj(
             file.file,
             BUCKET_NAME,
-            file_name,
-            ExtraArgs={'ACL': 'public-read'}
+            file_name
         )
         file_url = f'https://{BUCKET_NAME}.s3.amazonaws.com/{file_name}'
         
@@ -59,7 +59,29 @@ def upload_pdf(db: Session, file: UploadFile, file_name: str):
         return db_pdf
     except NoCredentialsError:
         raise HTTPException(status_code=500, detail="Error in AWS credentials")
-    except BotoCoreError as e:
-        raise HTTPException(status_code=500, detail=f"Error interacting with AWS S3: {str(e)}")
+
+
+#def upload_pdf(db: Session, file: UploadFile, file_name: str):
+#    s3_client = Settings.get_s3_client()
+#    BUCKET_NAME = Settings().AWS_S3_BUCKET
+#
+#    try:
+#        s3_client.upload_fileobj(
+#            file.file,
+#            BUCKET_NAME,
+#            file_name,
+#            ExtraArgs={'ACL': 'public-read'}
+#        )
+#        file_url = f'https://{BUCKET_NAME}.s3.amazonaws.com/{file_name}'
+#        
+#        db_pdf = models.PDF(name=file.filename, selected=False, file=file_url)
+#        db.add(db_pdf)
+#        db.commit()
+#        db.refresh(db_pdf)
+#        return db_pdf
+#    except NoCredentialsError:
+#        raise HTTPException(status_code=500, detail="Error in AWS credentials")
+#    except BotoCoreError as e:
+#        raise HTTPException(status_code=500, detail=f"Error interacting with AWS S3: {str(e)}")
     
    
