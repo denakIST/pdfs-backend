@@ -14,16 +14,16 @@ import config
 app = FastAPI()
 
 
-origins = [
-    "http://localhost:3000",  # Localhost for development
-    "https://pdfs-frontend-b5hw1bp2v-dakar75gmailcoms-projects.vercel.app"  # Vercel deployment
-    
-]
+#origins = [
+#    "http://localhost:3000",  # Localhost for development
+#    "https://pdfs-frontend-b5hw1bp2v-dakar75gmailcoms-projects.vercel.app"  # Vercel deployment    
+#]
 
 # CORS configuration, needed for frontend development
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    #allow_origins=origins,
+    allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
