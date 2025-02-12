@@ -13,8 +13,10 @@ password = os.environ['DATABASE_PASSWORD']
 host = os.environ['DATABASE_HOST']
 port = os.environ['DATABASE_PORT']
 db_name = os.environ['DATABASE_NAME']
+db_url=os.environ['DATABASE_URL']
 
-SQLALCHEMY_DATABASE_URL = f"postgresql://{user}:{password}@{host}:{port}/{db_name}"
+#SQLALCHEMY_DATABASE_URL = f"postgresql://{user}:{password}@{host}:{port}/{db_name}"
+SQLALCHEMY_DATABASE_URL = f"postgresql://{db_url}"
 
 engine = create_engine(
     SQLALCHEMY_DATABASE_URL
