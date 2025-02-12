@@ -9,7 +9,6 @@ class Settings(BaseSettings):
     DATABASE_PASSWORD: str
     DATABASE_PORT: int
     DATABASE_URL: str
-    PSQL_COMMAND: str
     app_name: str = "Full Stack PDF App"
     AWS_KEY: str
     AWS_SECRET: str
